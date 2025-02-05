@@ -10,6 +10,7 @@ function Products() {
   const [error, setError] = useState(false);
   const [cart, setCart] = useLocalStorageState("cart", {});
   const [filteredProducts, setFilteredProducts] = useState([]);
+
   // fetch products from fake api
   useEffect(() => {
     const fetchProducts = async () => {
@@ -29,6 +30,7 @@ function Products() {
 
     fetchProducts();
   }, []);
+
   //add to cart
   const addToCart = (product) => {
     const productToAdd = { ...product, quantity: 1 };
@@ -37,10 +39,11 @@ function Products() {
       [product.id]: productToAdd,
     }));
   };
-  //check if the item already in the cart
 
+  //check if the item already in the cart
   const isInCart = (productId) =>
     Object.keys(cart || {}).includes(productId.toString());
+
   //handle the input to search
   function handleSearch(searchValue) {
     setSearchInput(searchValue);
@@ -73,7 +76,6 @@ function Products() {
         />
       </div>
       <div className="grid grid-cols-4 gap-4">
-        <h1 className="col-span-4 text-2xl font-bold mb-4">Products</h1>
         {filteredProducts.map((product) => (
           <div key={product.id} className="m-3 p-4 border rounded-lg shadow-lg">
             <img
@@ -87,7 +89,7 @@ function Products() {
               Price: <strong>{product.price}</strong>
             </p>
             <button
-              // disabled={isInCart(product.id)}
+              disabled={isInCart(product.id)}
               onClick={() => addToCart(product)}
               className="mt-2 px-4 py-2 bg-blue-500 text-white self-center rounded hover:bg-blue-600"
             >

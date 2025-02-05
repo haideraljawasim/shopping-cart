@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 function Quantifier({ cartArray }) {
   const totalQuantity = cartArray.reduce(
