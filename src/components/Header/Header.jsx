@@ -13,7 +13,7 @@ function Header() {
   );
 
   return (
-    <div className="flex justify-between m-4 border-b-2 p-4 border-gray-300  bg-blue-950 ">
+    <div className="flex justify-between  border-b-2 p-4 border-gray-300  bg-blue-950  sticky top-0 w-full left-0 right-0">
       <div className="flex-[0.1] flex justify-between w-[50%] items-center  ">
         <Link to="/">
           <img src={logo} className="w-10" />
